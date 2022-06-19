@@ -2,6 +2,7 @@
 
 import { chrome } from '../../.electron-vendors.cache.json';
 import { join } from 'path';
+import { builtinModules } from 'module';
 import { renderer } from 'unplugin-auto-expose';
 
 const PACKAGE_ROOT = __dirname;
@@ -31,6 +32,9 @@ const config = {
     assetsDir: '.',
     rollupOptions: {
       input: join(PACKAGE_ROOT, 'index.html'),
+      external: [
+        ...builtinModules.filter(m => m !== 'process' && m !== 'assert'),
+      ]
     },
     emptyOutDir: true,
     brotliSize: false,

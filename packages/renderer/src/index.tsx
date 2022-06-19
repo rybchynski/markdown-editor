@@ -1,6 +1,7 @@
 import * as React from 'react'
 // import * as ReactDOM from 'react-dom'
 import { createRoot } from 'react-dom/client'
+import './shim'
 import './index.css'
 import App from './app'
 
